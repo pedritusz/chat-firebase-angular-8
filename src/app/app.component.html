@@ -1,0 +1,17 @@
+<h1 class="bg-primary text-center m-bottom-darck py-3 container main-container">
+  chat firebase
+</h1>
+
+<div class="container main-container">
+
+  <div class="col-md-12 text-right" *ngIf="chatService.usuario.uid">
+    <button class="btn btn-outline-danger" (click)="chatService.logout()">salir</button>
+  </div>
+  <app-login *ngIf="!chatService.usuario.uid"></app-login>
+
+  <div *ngIf="chatService.usuario.uid" class="container  ">
+
+    <app-chat></app-chat>
+
+  </div>
+</div>
