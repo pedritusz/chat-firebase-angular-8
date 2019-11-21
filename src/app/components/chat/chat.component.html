@@ -1,17 +1,36 @@
-<h2>Chat  </h2>
+<h2>Chat</h2>
 <hr />
 <div class="app-mensajes">
-  <div *ngFor="let chat of servicio.chats" >
-    <div *ngIf="servicio.usuario.uid == chat.uid" class="text-right">
-      <span class="small">{{ chat.fecha | date: "short" }} </span
-      ><span class="badge badge-success px-4">Yo</span>
-      <p>{{ chat.mensaje }}</p>
-    </div>
-    <div *ngIf="servicio.usuario.uid !== chat.uid" class="text-left">
-        <span class="badge badge-primary">{{ servicio.usuario.nombre }} </span
-        ><span class="small">{{ chat.fecha | date: "short" }}</span>
-        <p>{{ chat.mensaje }}</p>
+  <div *ngFor="let chat of servicio.chats">
+      <div *ngIf="servicio.usuario.uid == chat.uid" class="text-right">
+    <div class="col-12">
+
+        <span class="small">{{ chat.fecha | date: "short" }} </span
+        ><span class="badge badge-success px-4">Yo</span><br />
       </div>
+
+      <p
+        class="container overflow-auto border-danger border-bottom rounded-left"
+      >
+        {{ chat.mensaje }}
+      </p>
+    </div>
+    <div *ngIf="servicio.usuario.uid !== chat.uid; row" class="text-left">
+    <div class="col-12">
+     
+        <span
+          ><img
+            style="width: 40px; border-radius: 50%;"
+            src="https://lh5.googleusercontent.com/-VZG2KOhcaa8/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfaO6Y6llxhuNSV2G5LDcOCWoZJIQ/photo.jpg"
+        /></span>
+        <span class="badge badge-primary">{{ chat.nombre }} </span
+        ><span class="small">{{ chat.fecha | date: "short" }}</span>
+      </div>
+      <p class="container overflow-auto border-warning border-bottom rounded-left">
+        {{ chat.mensaje }}
+      </p>
+      <br />
+    </div>
   </div>
 
   <input

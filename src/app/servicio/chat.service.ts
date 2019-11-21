@@ -30,6 +30,7 @@ export class ChatService {
       }
       this.usuario.nombre = userState.displayName;
       this.usuario.uid = userState.uid;
+      this.usuario.imagen = userState.photoURL;
     });
   }
 
@@ -40,7 +41,7 @@ export class ChatService {
 
     this.itemsCollection = this.firebase.collection<mensaje>("chats", (
       ref // ejemplo usuarios: habria todos los usuarios con sus datos
-    ) => ref.orderBy("fecha", "asc").limitToLast(20));
+    ) => ref.orderBy("fecha", "asc").limitToLast(50));
 
     return this.itemsCollection
       .valueChanges() // value changes devuelve un obserbable que devuelve los datos del objeto(sin metadatos)
@@ -50,9 +51,10 @@ export class ChatService {
   enviarMensaje(texto) {
     let mensaje: mensaje = {
       fecha: new Date().getTime(),
-      nombre: "Pedro",
+      nombre: this.usuario.nombre,
       mensaje: texto,
-      uid: this.usuario.uid
+      uid: this.usuario.uid,
+      imagen: this.usuario.imagen
     };
     return this.itemsCollection.add(mensaje);
   }

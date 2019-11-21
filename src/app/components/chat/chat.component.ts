@@ -26,4 +26,5 @@ export class ChatComponent implements OnInit {
       this.servicio.enviarMensaje(this.mensaje).then(x => (this.mensaje = ' '));
     }
   }
+  
 }
