@@ -1,12 +1,16 @@
 <h2>Chat</h2>
 <hr />
-<div class="app-mensajes">
+<div class="app-mensajes container">
   <div *ngFor="let chat of servicio.chats">
       <div *ngIf="servicio.usuario.uid == chat.uid" class="text-right">
     <div class="col-12">
 
         <span class="small">{{ chat.fecha | date: "short" }} </span
-        ><span class="badge badge-success px-4">Yo</span><br />
+        ><span
+        ><img
+          style="width: 40px; border-radius: 50%;"
+          [src]="chat.imagen"
+      /></span>
       </div>
 
       <p
@@ -21,7 +25,7 @@
         <span
           ><img
             style="width: 40px; border-radius: 50%;"
-            src="https://lh5.googleusercontent.com/-VZG2KOhcaa8/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfaO6Y6llxhuNSV2G5LDcOCWoZJIQ/photo.jpg"
+            [src]="chat.imagen"
         /></span>
         <span class="badge badge-primary">{{ chat.nombre }} </span
         ><span class="small">{{ chat.fecha | date: "short" }}</span>
@@ -32,11 +36,13 @@
       <br />
     </div>
   </div>
-
-  <input
+<div class="input">
+  <input 
     id="app-mensajes"
     class="form-control"
     [(ngModel)]="mensaje"
     (keyup.enter)="enviar()"
   />
+  <button class="btn btn-primary"  (click)="enviar()">enviar</button>
+</div>
 </div>

@@ -4,7 +4,17 @@ import { ChatService } from 'src/app/servicio/chat.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styles: []
+  styles: [
+    `.input{
+      width:95%;
+      display: flex;
+    }
+    button{
+      color:blue
+    }`
+
+
+  ]
 })
 export class ChatComponent implements OnInit {
   mensaje: string;
@@ -26,5 +36,5 @@ export class ChatComponent implements OnInit {
       this.servicio.enviarMensaje(this.mensaje).then(x => (this.mensaje = ' '));
     }
   }
-  
+
 }
